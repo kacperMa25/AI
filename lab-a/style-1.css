@@ -3,7 +3,9 @@
    #223249, #2d4f67 (Wave Blue), #dcd7ba, #c8c093 (Fuji/Old White),
    #7e9cd8, #957fb8, #98bb6c, #e46876, #c34043, #ffa066, #e6c384, #6a9589, #7fb4ca.
    Układ: Zewnętrzne bloki nakładające się na siebie, Liquid Glass w lewym górnym rogu,
-   cienkie ramki Mountain Adventure, pionowe plakaty oraz schemat ze strzałkami. */
+   cienkie ramki Mountain Adventure, pionowe plakaty oraz ciężkie obramowania.
+   Kod wygenerowany przez AI, z moimi niewielkimi poprawkami.
+    */
 
 * {
   box-sizing: border-box;
@@ -13,26 +15,42 @@
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  background-color: #16161d;
+  background-color: #1f1f28;
+  background-image:
+    radial-gradient(circle at 8% 18%, #957fb8 0%, transparent 28%),
+    radial-gradient(circle at 14% 42%, #7e9cd8 0%, transparent 26%),
+    radial-gradient(circle at 6% 68%, #6a9589 0%, transparent 28%),
+    radial-gradient(circle at 88% 25%, #e46876 0%, transparent 32%),
+    linear-gradient(135deg, #16161d 0%, #223249 50%, #1f1f28 100%);
+  background-attachment: fixed;
   color: #1f1f28;
   line-height: 1.6;
-  padding: 36px 36px 60px 265px;
+  padding: 36px 36px 60px 180px;
 }
 
-/* 1. Pływający panel w lewym górnym rogu (Liquid Glass Kit w barwach Kanagawa) */
+/* 1. Pływający panel w lewym górnym rogu - prawdziwy efekt Liquid Glass */
 nav {
   position: fixed;
   top: 24px;
   left: 24px;
-  width: 215px;
-  padding: 20px;
-  background: rgba(54, 54, 70, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(220, 215, 186, 0.55);
-  border-radius: 26px;
-  box-shadow: 0 20px 40px rgba(22, 22, 29, 0.55),
-              inset 0 1px 2px rgba(220, 215, 186, 0.45);
+  width: 225px;
+  padding: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(220, 215, 186, 0.42) 0%,
+    rgba(220, 215, 186, 0.12) 50%,
+    rgba(149, 127, 184, 0.32) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(220, 215, 186, 0.45);
+  border-top: 2px solid rgba(220, 215, 186, 0.95);
+  border-left: 2px solid rgba(220, 215, 186, 0.85);
+  border-radius: 28px;
+  box-shadow:
+    0 24px 48px rgba(22, 22, 29, 0.55),
+    inset 0 2px 6px rgba(220, 215, 186, 0.8),
+    inset 0 -4px 12px rgba(126, 156, 216, 0.45);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -41,34 +59,40 @@ nav {
 
 nav h2 {
   font-size: 0.95rem;
-  color: #dcd7ba;
+  color: #16161d;
   margin-bottom: 4px;
+  text-shadow: 0 1px 0 rgba(220, 215, 186, 0.7);
 }
 
 nav a {
   text-decoration: none;
   font-size: 0.85rem;
-  font-weight: 600;
-  padding: 9px 14px;
+  font-weight: 700;
+  padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(220, 215, 186, 0.16);
-  color: #dcd7ba;
-  border: 1px solid rgba(220, 215, 186, 0.35);
+  background: linear-gradient(180deg, rgba(220, 215, 186, 0.55), rgba(220, 215, 186, 0.2));
+  color: #16161d;
+  border: 1px solid rgba(220, 215, 186, 0.75);
+  box-shadow:
+    0 6px 14px rgba(22, 22, 29, 0.2),
+    inset 0 2px 3px rgba(220, 215, 186, 0.9);
   transition: 0.2s;
 }
 
 nav a:nth-of-type(1) {
-  background: #957fb8;
-  color: #16161d;
+  background: linear-gradient(180deg, rgba(149, 127, 184, 0.9), rgba(149, 127, 184, 0.55));
+  color: #dcd7ba;
+  box-shadow: 0 6px 16px rgba(149, 127, 184, 0.45), inset 0 2px 4px rgba(220, 215, 186, 0.8);
 }
 
 nav a:nth-of-type(2) {
-  background: #6a9589;
-  color: #16161d;
+  background: linear-gradient(180deg, rgba(106, 149, 137, 0.9), rgba(106, 149, 137, 0.55));
+  color: #dcd7ba;
+  box-shadow: 0 6px 16px rgba(106, 149, 137, 0.45), inset 0 2px 4px rgba(220, 215, 186, 0.8);
 }
 
 nav a:hover {
-  background: #7e9cd8;
+  background: linear-gradient(180deg, rgba(126, 156, 216, 0.9), rgba(126, 156, 216, 0.55));
   color: #16161d;
   transform: translateY(-2px);
 }
@@ -86,7 +110,16 @@ header, section, footer {
   position: relative;
 }
 
-#sec1 { margin-top: -52px; z-index: 2; background: #1f1f28; color: #dcd7ba; border-color: #363646; }
+#sec1 {
+  margin-top: -52px;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 25% 60%, rgba(149, 127, 184, 0.35), transparent 45%),
+    radial-gradient(circle at 80% 35%, rgba(126, 156, 216, 0.35), transparent 45%),
+    #1f1f28;
+  color: #dcd7ba;
+  border-color: #363646;
+}
 #sec2 { margin-top: -52px; z-index: 3; background: #c8c093; color: #1f1f28; border-color: #dcd7ba; }
 #sec3 { margin-top: -52px; z-index: 4; background: #dcd7ba; color: #1f1f28; border-color: #c8c093; }
 #sec4 { margin-top: -52px; z-index: 5; background: #223249; color: #dcd7ba; border-color: #2d4f67; }
@@ -126,21 +159,31 @@ img {
   display: block;
 }
 
-/* Lista nieuporządkowana (ul) w stylu pigułek Liquid Glass */
+/* Lista nieuporządkowana (ul) w stylu wypukłych pigułek Liquid Glass */
 ul {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 14px;
   margin: 20px 0;
 }
 
 ul li {
-  background: rgba(54, 54, 70, 0.7);
-  border: 1px solid #54546d;
+  background: linear-gradient(
+    135deg,
+    rgba(220, 215, 186, 0.25) 0%,
+    rgba(220, 215, 186, 0.06) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(220, 215, 186, 0.45);
+  border-top: 1.5px solid rgba(220, 215, 186, 0.85);
+  box-shadow:
+    0 10px 24px rgba(22, 22, 29, 0.35),
+    inset 0 1px 4px rgba(220, 215, 186, 0.55);
   color: #dcd7ba;
-  padding: 10px 14px;
-  border-radius: 14px;
+  padding: 12px 16px;
+  border-radius: 18px;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -152,17 +195,18 @@ ul li::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: #957fb8;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #957fb8, #7e9cd8);
+  box-shadow: inset 0 1px 2px rgba(220, 215, 186, 0.8);
   color: #16161d;
   font-weight: bold;
   font-size: 0.75rem;
   flex-shrink: 0;
 }
 
-/* 3. Sekcja 1: Klimat "Start Your Adventure Here / Mountain" z odsuniętą ramką */
+/* 3. Sekcja 1: Klimat "Start Your Adventure Here / Mountain" z odsuniętą ramką + Liquid Glass */
 #sec1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -184,8 +228,11 @@ ul li::before {
 
 #sec1 article {
   padding: 24px;
-  background: #2a2a37;
-  border: 1px solid #54546d;
+  background: linear-gradient(135deg, rgba(220, 215, 186, 0.16), rgba(54, 54, 70, 0.35));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(220, 215, 186, 0.45);
+  box-shadow: inset 0 1px 3px rgba(220, 215, 186, 0.5);
   outline: 1px solid #c8c093;
   outline-offset: 6px;
 }
@@ -225,7 +272,7 @@ ul li::before {
   margin-bottom: 6px;
 }
 
-/* 5. Sekcja 3: Karta "E-mail marketing" (obwódka, zielony zakreślacz Kanagawa i strzałki) */
+/* 5. Sekcja 3: Karta "E-mail marketing" (ciężkie dolne obramowanie, zakreślacz i strzałki) */
 #sec3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -240,7 +287,8 @@ ul li::before {
   position: relative;
   padding: 24px;
   background: #dcd7ba;
-  border: 2.5px solid #1f1f28;
+  border: 2px solid #1f1f28;
+  border-bottom: 9px solid #1f1f28;
   border-radius: 26px;
 }
 
@@ -270,7 +318,7 @@ ul li::before {
   font-size: 0.85rem;
 }
 
-/* 6. Sekcja 4: Minimalistyczne karty usług z pigułkami */
+/* 6. Sekcja 4: Minimalistyczne karty usług z ciężkim dolnym obramowaniem */
 #sec4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -288,8 +336,9 @@ ul li::before {
 #sec4 article {
   padding: 24px;
   background: #2d4f67;
-  border: 1px solid #7fb4ca;
-  border-radius: 22px;
+  border: 2px solid #16161d;
+  border-bottom: 8px solid #16161d;
+  border-radius: 24px;
 }
 
 #sec4 article h3 {
