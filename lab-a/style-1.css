@@ -1,0 +1,310 @@
+/* STYL 1 - Kolorystyka: WYŁĄCZNIE paleta Kanagawa z Styl1.png:
+   #16161d, #1f1f28, #2a2a37, #363646, #54546d (Sumi Ink),
+   #223249, #2d4f67 (Wave Blue), #dcd7ba, #c8c093 (Fuji/Old White),
+   #7e9cd8, #957fb8, #98bb6c, #e46876, #c34043, #ffa066, #e6c384, #6a9589, #7fb4ca.
+   Układ: Zewnętrzne bloki nakładające się na siebie, Liquid Glass w lewym górnym rogu,
+   cienkie ramki Mountain Adventure, pionowe plakaty oraz schemat ze strzałkami. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #16161d;
+  color: #1f1f28;
+  line-height: 1.6;
+  padding: 36px 36px 60px 265px;
+}
+
+/* 1. Pływający panel w lewym górnym rogu (Liquid Glass Kit w barwach Kanagawa) */
+nav {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 215px;
+  padding: 20px;
+  background: rgba(54, 54, 70, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(220, 215, 186, 0.55);
+  border-radius: 26px;
+  box-shadow: 0 20px 40px rgba(22, 22, 29, 0.55),
+              inset 0 1px 2px rgba(220, 215, 186, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+
+nav h2 {
+  font-size: 0.95rem;
+  color: #dcd7ba;
+  margin-bottom: 4px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(220, 215, 186, 0.16);
+  color: #dcd7ba;
+  border: 1px solid rgba(220, 215, 186, 0.35);
+  transition: 0.2s;
+}
+
+nav a:nth-of-type(1) {
+  background: #957fb8;
+  color: #16161d;
+}
+
+nav a:nth-of-type(2) {
+  background: #6a9589;
+  color: #16161d;
+}
+
+nav a:hover {
+  background: #7e9cd8;
+  color: #16161d;
+  transform: translateY(-2px);
+}
+
+/* 2. Zewnętrzne bloki nakładające się na siebie kaskadowo (prawy zrzut Styl1.png) */
+header, section, footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 48px 92px;
+  background: #dcd7ba;
+  color: #1f1f28;
+  border-radius: 42px;
+  border: 1.5px solid #c8c093;
+  box-shadow: 0 -18px 36px rgba(22, 22, 29, 0.5);
+  position: relative;
+}
+
+#sec1 { margin-top: -52px; z-index: 2; background: #1f1f28; color: #dcd7ba; border-color: #363646; }
+#sec2 { margin-top: -52px; z-index: 3; background: #c8c093; color: #1f1f28; border-color: #dcd7ba; }
+#sec3 { margin-top: -52px; z-index: 4; background: #dcd7ba; color: #1f1f28; border-color: #c8c093; }
+#sec4 { margin-top: -52px; z-index: 5; background: #223249; color: #dcd7ba; border-color: #2d4f67; }
+footer { margin-top: -52px; z-index: 6; background: #2a2a37; color: #c8c093; border-color: #54546d; padding-bottom: 48px; text-align: center; }
+
+header {
+  text-align: center;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f1f28;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+p {
+  margin-bottom: 14px;
+}
+
+/* Zdjęcia w HTML: pionowy plakat w #sec1 oraz szeroki kadr w #sec4 */
+img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2px solid #c8c093;
+  outline: 1px solid #54546d;
+  outline-offset: 6px;
+  margin: 14px 0;
+  display: block;
+}
+
+/* Lista nieuporządkowana (ul) w stylu pigułek Liquid Glass */
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+ul li {
+  background: rgba(54, 54, 70, 0.7);
+  border: 1px solid #54546d;
+  color: #dcd7ba;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ul li::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: #957fb8;
+  color: #16161d;
+  font-weight: bold;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* 3. Sekcja 1: Klimat "Start Your Adventure Here / Mountain" z odsuniętą ramką */
+#sec1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+#sec1 h2, #sec1 ul {
+  grid-column: 1 / -1;
+}
+
+#sec1 h2 {
+  font-family: Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #dcd7ba;
+  text-align: center;
+}
+
+#sec1 article {
+  padding: 24px;
+  background: #2a2a37;
+  border: 1px solid #54546d;
+  outline: 1px solid #c8c093;
+  outline-offset: 6px;
+}
+
+#sec1 article h3 {
+  font-family: Georgia, serif;
+  color: #e6c384;
+  margin-bottom: 8px;
+}
+
+/* 4. Sekcja 2: Pionowe układy plakatowe (Spider-Man) */
+#sec2 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+#sec2 h2, #sec2 > p {
+  grid-column: 1 / -1;
+}
+
+#sec2 article {
+  min-height: 300px;
+  padding: 20px 16px;
+  border-radius: 18px;
+  background: linear-gradient(170deg, #223249 0%, #2d4f67 55%, #c34043 100%);
+  color: #dcd7ba;
+  border: 1.5px solid #1f1f28;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#sec2 article h3 {
+  color: #e6c384;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+/* 5. Sekcja 3: Karta "E-mail marketing" (obwódka, zielony zakreślacz Kanagawa i strzałki) */
+#sec3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+#sec3 h2, #sec3 > p {
+  grid-column: 1 / -1;
+}
+
+#sec3 article {
+  position: relative;
+  padding: 24px;
+  background: #dcd7ba;
+  border: 2.5px solid #1f1f28;
+  border-radius: 26px;
+}
+
+#sec3 article h3 {
+  display: inline-block;
+  background: #98bb6c;
+  color: #16161d;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+#sec3 article:not(:last-child)::after {
+  content: "↗";
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1f1f28;
+  color: #98bb6c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+/* 6. Sekcja 4: Minimalistyczne karty usług z pigułkami */
+#sec4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+#sec4 h2, #sec4 > p, #sec4 > img {
+  grid-column: 1 / -1;
+}
+
+#sec4 h2 {
+  text-align: center;
+}
+
+#sec4 article {
+  padding: 24px;
+  background: #2d4f67;
+  border: 1px solid #7fb4ca;
+  border-radius: 22px;
+}
+
+#sec4 article h3 {
+  display: inline-block;
+  background: #16161d;
+  color: #dcd7ba;
+  font-size: 0.85rem;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  body { padding: 20px; }
+  nav { position: static; width: 100%; margin-bottom: 24px; }
+  ul, #sec1, #sec2, #sec3, #sec4 { grid-template-columns: 1fr; }
+  #sec3 article:not(:last-child)::after { display: none; }
+}

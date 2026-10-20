@@ -1,0 +1,299 @@
+/* STYL 2 - Kolorystyka: WYŁĄCZNIE paleta 5x6 z górnej części Styl2.png:
+   #1c1c1c, #2a2a2a, #3b3a39, #4b4846, #5b5652, #69615a (ciemne grafity i brązy),
+   #7e746a, #93887d, #a89f94, #bdb4a7, #d2c9b8, #e6dec8 (kamienne beże),
+   #f4ecc8, #c92a2a, #f03e3e, #d9531e, #ff7714 (ogniste czerwienie i pomarańcze),
+   #d68f22, #f2b938, #88ab33, #a9bd27, #5f9e6e (złota ochra i zielenie),
+   #7eb87a, #4d929b, #7ea1a1, #a86483, #d0859c (szałwia, turkus i zgaszony róż). */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1c1c1c;
+  background-image: radial-gradient(circle at 50% 0%, rgba(217, 83, 30, 0.2), transparent 45%);
+  color: #bdb4a7;
+  line-height: 1.6;
+  counter-reset: blok;
+}
+
+/* Surowy pasek nawigacji na górze */
+nav {
+  max-width: 960px;
+  margin: 24px auto 0;
+  padding: 14px 24px;
+  background: #2a2a2a;
+  border: 1px solid #4b4846;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+nav h2 {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #e6dec8;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ff7714;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+}
+
+nav a:hover {
+  border-color: #a9bd27;
+  color: #a9bd27;
+}
+
+header, main, footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 1. Nagłówek w stylu karty "Popular this month" (ciemne tło + gradientowa ramka z palety) */
+header {
+  margin-top: 36px;
+  padding: 56px 40px;
+  background: linear-gradient(#1c1c1c, #1c1c1c) padding-box,
+              linear-gradient(135deg, #ff7714, #c92a2a 40%, #a86483 70%, #4d929b) border-box;
+  border: 4px solid transparent;
+  border-radius: 18px;
+}
+
+h1 {
+  font-family: system-ui, sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #f4ecc8;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+}
+
+/* Zdjęcia w HTML: surowe ramki RPG */
+img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border: 2px solid #4b4846;
+  border-top: 3px solid #d68f22;
+  margin: 18px 0;
+  display: block;
+}
+
+/* 2. Pionowe, numerowane bloki od 01 do 04 (naprzemiennie lewo/prawo jak na Styl2.png) */
+section {
+  counter-increment: blok;
+  margin: 72px 0;
+  padding: 36px;
+  background: #2a2a2a;
+  border: 1px solid #3b3a39;
+  position: relative;
+}
+
+section::before {
+  content: "0" counter(blok);
+  display: block;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 6rem;
+  line-height: 0.85;
+  color: #f4ecc8;
+  margin-top: -66px;
+  margin-bottom: 24px;
+}
+
+section:nth-of-type(even)::before {
+  text-align: right;
+}
+
+h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 1.7rem;
+  color: #a9bd27;
+  margin-bottom: 16px;
+}
+
+/* Lista nieuporządkowana (ul) jako techniczna siatka z zielonym podkreśleniem ("02 Our Services") */
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 28px 0;
+}
+
+ul li {
+  background: #1c1c1c;
+  border-top: 3px solid #88ab33;
+  padding: 14px 12px;
+  font-size: 0.85rem;
+  color: #e6dec8;
+}
+
+ul li::before {
+  content: ">> ";
+  color: #a9bd27;
+  font-weight: bold;
+}
+
+/* Blok 01: Zielona ramka wokół nagłówka ("Why Serious Business?") */
+#sec1 h2 {
+  display: inline-block;
+  color: #f4ecc8;
+  border: 1.5px solid #88ab33;
+  padding: 14px 20px;
+}
+
+#sec1 article {
+  margin-top: 18px;
+  padding: 18px;
+  background: #1c1c1c;
+  border-left: 3px solid #d9531e;
+}
+
+#sec1 article h3 {
+  color: #f2b938;
+  margin-bottom: 6px;
+}
+
+/* 3. Blok 02: 5 Heksagonów w układzie plastra miodu (3 na górze + 2 na dole z Styl2.png) */
+#sec2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  background: #1c1c1c;
+  border-color: #4d929b;
+}
+
+#sec2::before, #sec2 h2, #sec2 > p {
+  width: 100%;
+}
+
+#sec2 article {
+  width: 245px;
+  height: 275px;
+  padding: 40px 22px;
+  background: linear-gradient(160deg, #4d929b, #2a2a2a 75%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#sec2 article:nth-of-type(4),
+#sec2 article:nth-of-type(5) {
+  margin-top: -36px;
+}
+
+#sec2 article h3 {
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #f4ecc8;
+  border: 1.5px solid #f4ecc8;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+}
+
+/* 4. Blok 03: Nakładające się ciemne karty w stylu CSS-Tricks (prawy górny róg Styl2.png) */
+#sec3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#sec3::before, #sec3 h2, #sec3 > p {
+  width: 100%;
+}
+
+#sec3 article {
+  flex: 1;
+  min-width: 220px;
+  padding: 28px 24px;
+  background: linear-gradient(180deg, #3b3a39 0%, #1c1c1c 100%);
+  border: 1px solid #5b5652;
+  border-radius: 16px;
+  box-shadow: -16px 0 32px rgba(28, 28, 28, 0.95);
+  transition: transform 0.25s ease;
+}
+
+#sec3 article:not(:first-of-type) {
+  margin-left: -28px;
+}
+
+#sec3 article:hover {
+  transform: translateY(-10px);
+}
+
+#sec3 article h3 {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+  color: #f4ecc8;
+  margin-bottom: 10px;
+}
+
+#sec3 article h3::after {
+  content: "ARTICLE // CSS";
+  display: block;
+  font-size: 0.7rem;
+  color: #ff7714;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+/* 5. Blok 04: Surowe karty projektowe ("04 Catapult / Empire State Building") */
+#sec4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+#sec4::before, #sec4 h2, #sec4 > p, #sec4 > img {
+  grid-column: 1 / -1;
+}
+
+#sec4 article {
+  background: #1c1c1c;
+  border: 1px solid #4b4846;
+  border-top: 2px solid #5f9e6e;
+  padding: 22px;
+}
+
+#sec4 article h3 {
+  color: #7eb87a;
+  margin-bottom: 8px;
+}
+
+footer {
+  padding: 32px 20px;
+  text-align: center;
+  border-top: 1px solid #3b3a39;
+  font-size: 0.8rem;
+  color: #7e746a;
+}
+
+@media (max-width: 850px) {
+  ul, #sec4 { grid-template-columns: 1fr; }
+  #sec2 article:nth-of-type(4), #sec2 article:nth-of-type(5) { margin-top: 0; }
+  #sec3 { flex-direction: column; gap: 16px; }
+  #sec3 article:not(:first-of-type) { margin-left: 0; }
+}
