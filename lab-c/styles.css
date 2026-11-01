@@ -11,29 +11,105 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #1e293b;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr auto auto 1fr;
   justify-content: center;
   align-content: start;
-  gap: 20px 24px;
+  align-items: center;
+  gap: 18px 12px;
 }
 
 body br {
   display: none;
 }
 
-/* Mapa wyśrodkowana w pierwszym wierszu nad oboma polami */
+/* Etykiety i listy rozwijane (select) w jednym wierszu na tym samym poziomie */
+label {
+  justify-self: end;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+select {
+  justify-self: start;
+  appearance: none;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 34px 8px 14px;
+  min-width: 90px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#rowNumber {
+  margin-right: 16px;
+}
+
+select:hover {
+  border-color: #94a3b8;
+}
+
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+/* Przycisk powiadomień w prawym górnym rogu */
+#notificationsButton {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 1000;
+  background-color: #6366f1;
+  color: #ffffff;
+}
+
+#notificationsButton:hover {
+  background-color: #4f46e5;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.28);
+}
+
+/* Mapa wyśrodkowana na całej szerokości */
 #map {
   grid-column: 1 / -1;
   justify-self: center;
 }
 
-/* Przyciski obok siebie na środku w drugim wierszu */
+/* Przyciski obok siebie na środku pod mapą */
 #getLocation {
+  grid-column: 1 / 3;
   justify-self: end;
+  margin-right: 6px;
 }
 
 #saveButton {
+  grid-column: 3 / 5;
   justify-self: start;
+  margin-left: 6px;
+}
+
+/* puzzleBox (lewa strona) i dropCanvas (prawa strona) na tym samym poziomie */
+#puzzleBox {
+  grid-column: 1 / 3;
+  justify-self: end;
+  margin-right: 6px;
+}
+
+#dropCanvas {
+  grid-column: 3 / 5;
+  justify-self: start;
+  margin-left: 6px;
 }
 
 /* Wspólny styl kontenerów mapy, rozsypanych puzzli i planszy docelowej */
@@ -50,7 +126,6 @@ body br {
   overflow: hidden;
 }
 
-/* puzzleBox (kolumna 1) i dropCanvas (kolumna 2) są na tym samym poziomie w trzecim wierszu */
 #puzzleBox,
 #dropCanvas {
   display: flex;

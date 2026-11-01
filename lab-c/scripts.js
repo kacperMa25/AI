@@ -1,18 +1,38 @@
 const saveButton = document.getElementById("saveButton");
 const getLocation = document.getElementById("getLocation");
+const enableNotifications = document.getElementById("notificationsButton");
+
+const colNumber = document.getElementById("colNumber");
+const rowNumber = document.getElementById("rowNumber");
 
 const dropBox = document.getElementById("dropCanvas")
 const puzzleBox = document.getElementById("puzzleBox")
 
-let map = L.map('map').setView([53.430127, 14.564802], 18);
-// L.tileLayer.provider('OpenStreetMap.DE').addTo(map);
-L.tileLayer.provider('Esri.WorldImagery').addTo(map);
-let marker = L.marker([53.430127, 14.564802]).addTo(map);
-marker.bindPopup("<strong>Hello!</strong><br>This is a popup.");
-
-let howManyPuzzlesInRow = 4;
-let howManyPuzzlesInCol = 4;
+let howManyPuzzlesInRow = rowNumber.value;
+let howManyPuzzlesInCol = colNumber.value;
 let totalPuzzles = howManyPuzzlesInCol * howManyPuzzlesInRow;
+const startingLat = 53.430127;
+const startingLon = 14.564802;
+const startingZoom = 18;
+
+let map = L.map('map').setView([startingLat, startingLon], startingZoom);
+L.tileLayer.provider('Esri.WorldImagery').addTo(map);
+let marker = L.marker([startingLat, startingLon]).addTo(map);
+marker.bindPopup("This is our starting point, isn't Wały Chrobrego beautiful?");
+
+enableNotifications.onclick = () => {
+  Notification.requestPermission();
+}
+
+colNumber.addEventListener("change", (e) => {
+  howManyPuzzlesInCol = e.target.value;
+  totalPuzzles = howManyPuzzlesInCol * howManyPuzzlesInRow;
+});
+
+rowNumber.addEventListener("change", (e) => {
+  howManyPuzzlesInRow = e.target.value;
+  totalPuzzles = howManyPuzzlesInCol * howManyPuzzlesInRow;
+});
 
 function checkIfCorrect() {
   let isCorrect = true;
@@ -49,7 +69,10 @@ function createDropZone(width, height, id) {
 
     dropZone.appendChild(draggedElement);
 
-    if (checkIfCorrect()) alert("You win!");
+    if (checkIfCorrect()) {
+      console.log("You win!");
+      if (Notification.permission === 'granted') new Notification("You win!");
+    }
   })
   return dropZone;
 }
@@ -71,7 +94,7 @@ saveButton.addEventListener("click", function () {
   puzzleBox.replaceChildren();
   dropBox.replaceChildren();
 
-  leafletImage(map, function (err, mapCanvas) {
+  leafletImage(map, function (_, mapCanvas) {
     let ctx = mapCanvas.getContext("2d");
     ctx.drawImage(mapCanvas, 0, 0);
 
@@ -116,7 +139,7 @@ saveButton.addEventListener("click", function () {
   });
 });
 
-getLocation.addEventListener("click", function (event) {
+getLocation.addEventListener("click", function () {
   if (!navigator.geolocation) {
     console.log("No geolocation.");
   }
@@ -127,6 +150,8 @@ getLocation.addEventListener("click", function (event) {
     let lon = position.coords.longitude;
 
     map.setView([lat, lon]);
+    let marker = L.marker([lat, lon]).addTo(map);
+    marker.bindPopup("Your current location");
   }, positionError => {
     console.error(positionError);
   });

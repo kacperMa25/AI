@@ -17,8 +17,19 @@
 </head>
 
 <body>
-    <div id="map"></div>
+    <label>Number of Rows</label><select id="rowNumber">
+        <option value="2"> 2 </option>
+        <option value="4" selected> 4 </option>
+        <option value="6"> 6 </option>
+    </select>
+    <label>Number of Columns</label><select id="colNumber">
+        <option value="2"> 2 </option>
+        <option value="4" selected> 4 </option>
+        <option value="6"> 6 </option>
+    </select>
+    <button id="notificationsButton">Enable system notifications</button>
 
+    <div id="map"></div>
     <button id="getLocation">Get Current Location</button>
     <button id="saveButton">Save Raster Map</button>
     <div id="puzzleBox"></div>
